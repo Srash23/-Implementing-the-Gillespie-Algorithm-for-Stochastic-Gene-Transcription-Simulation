@@ -1,48 +1,57 @@
-# Gillespie Algorithm for Stochastic Gene Expression
+# Gene Regulatory Network Simulation
 
-## Introduction
+This repository presents simulations of gene expression dynamics using systems of ordinary differential equations (ODEs) and stochastic modeling. It demonstrates how transcriptional regulation, degradation, and feedback influence molecular dynamics in synthetic gene networks.
 
-This project implements the Gillespie algorithm to model the stochastic process of gene transcription into mRNA. The inherent randomness of mRNA production and degradation is captured through computational simulations using Python. By analyzing the temporal behavior of mRNA molecules, this study provides valuable insights into gene expression dynamics.
-![_- visual selection](https://github.com/user-attachments/assets/5b032ddc-0052-4e92-96a9-6913c15a8785)
-## Why is This Analysis Important?
+## Project Overview
+This modeling pipeline simulates:
+- mRNA and protein dynamics via ODEs
+- Two-gene and three-gene feedback loops
+- Hill function-based activation and repression
+- Stochastic transcription via Gillespie algorithm
 
-**1. Capturing Stochasticity in Biology:** Traditional deterministic models often overlook the random fluctuations in biological systems. Stochastic modeling bridges this gap.
-**2. Understanding Gene Regulation:** Helps researchers explore how genes are expressed under different cellular conditions.
-**3. Application in Synthetic Biology:** Provides a framework for designing genetic circuits and understanding noise in gene expression.
+## Simulated Models
 
-## Methodology
-### Step 1: Stochastic Simulation Algorithm (SSA)
-1. The Gillespie algorithm simulates the stochastic nature of mRNA transcription and degradation.
-2. **Reactions:**
-   
-   i. mRNA Production: Gene → Gene + mRNA (transcription)
-   
-   ii. mRNA Degradation: mRNA → ∅ (degradation)
-4. Reaction propensities determine the probability of each reaction occurring at a given time.
+### Basic mRNA-Protein Dynamics
+- Deterministic ODEs
+- Simulates production and degradation
 
-### Step 2: Running the Simulation
-1. The algorithm iterates through randomly selected reaction events based on probability distributions.
-2. Tracks changes in mRNA count over time.
+### Two-Gene Activation Network
+- Gene 1 activates Gene 2
+- Hill function implementation
 
-### Step 3: Data Analysis and Visualization
-1. The time evolution of mRNA levels is plotted.
-2. Fluctuations are analyzed to understand variability in gene expression.
+### Two-Gene Repression Network
+- Gene 1 represses Gene 2
+- Inhibitory Hill function
 
-## Key Insights
-**1. **Gene Expression is Highly Variable:**** Stochastic effects cause significant fluctuations in mRNA levels, even under identical conditions.
+### Three-Gene Feedback Circuit
+- Gene 1 → activates Gene 2
+- Gene 2 → activates Gene 3
+- Gene 3 → represses Gene 1
 
-**2. **Burst-Like Transcription Patterns:**** Observed periods of rapid mRNA production followed by degradation events.
+### Gillespie Simulation
+- Stochastic modeling of transcription events
+- Captures noise in mRNA levels over time
 
-**3. **Impact of Reaction Rates:**** Small changes in transcription/degradation rates dramatically affect overall expression levels.
+## Requirements
+```bash
+pip install numpy matplotlib scipy
+```
 
-**4. **Real-World Implications:**** Supports the need for probabilistic models in synthetic biology and disease research.
+## Output Visualizations
+- Time-series plots of mRNA/protein levels
+<img width="546" alt="Screenshot 2025-04-21 at 11 21 10 PM" src="https://github.com/user-attachments/assets/ed648b64-93cb-4727-b0d6-d6ef131e72ed" />
 
-## Results and Discussion
-**1. Time-Series Plots:** Visualizations confirm the stochastic fluctuations in mRNA count.
+- Subplots for each gene in multi-gene systems
+<img width="836" alt="Screenshot 2025-04-21 at 11 20 37 PM" src="https://github.com/user-attachments/assets/60666a5b-0dba-4c3b-8ef3-af4ca03fa051" />
 
-**2. Comparison to Deterministic Models**: Shows that ignoring stochastic effects can lead to oversimplified interpretations of gene regulation.
+- Gillespie trajectory for stochastic transcription
+<img width="556" alt="Screenshot 2025-04-21 at 11 20 16 PM" src="https://github.com/user-attachments/assets/e8509c45-f94e-43b9-9748-3425194c3c79" />
 
-**3. Practical Relevance:** The findings emphasize the importance of modeling biological noise, particularly in single-cell gene expression studies.
-
-
-
+## Example Execution
+Run any simulation script directly in Python.
+```bash
+python ode_simulation.py
+python gillespie_simulation.py
+```
+## License
+MIT License
